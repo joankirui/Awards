@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    {% if results %}
+    <p>You searched for {{message}}</p>
+    {% else %}
+    <p>No projects found</p>
+    {% endif %}
+</div>
+{% endblock %}
