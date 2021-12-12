@@ -6,9 +6,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns=[
     path('profile/',views.profile, name='profile'),
     path('update/',views.edit_profile, name='edit'),
+    path('api/profile',views.ProfileViews.as_view(),name='profileapi')
 
 ]
 if settings.DEBUG:

@@ -38,3 +38,13 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def delete_post(self):
+        self.delete()
+
+    def save_post(self):
+        self.save()
+
+    @classmethod
+    def search_project(cls,search_term):
+        return cls.objects.filter(title_icontains=search_term)

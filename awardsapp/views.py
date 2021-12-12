@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from awardsapp.models import Post
-
+from .serializers import ProfileSerializer
 from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm
+from rest_framework.generics import (GenericAPIView, ListAPIView,RetrieveAPIView)
+from .models import Profile,Post
 
 # Create your views here.
 def registration(request):
@@ -63,3 +65,8 @@ def search_project(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+class ProfileViews(ListAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+    
