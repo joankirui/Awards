@@ -4,9 +4,11 @@ from django.contrib import messages
 
 from awardsapp.models import Post
 from .serializers import PostSerializer, ProfileSerializer
-from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm
+from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm,PostForm
 from rest_framework.generics import ( ListAPIView)
 from .models import Profile,Post
+import random
+
 
 # Create your views here.
 def registration(request):
@@ -23,6 +25,36 @@ def registration(request):
             form = RegisterForm()
         return render(request,'django_registration/registration_form.html', {'form': form})
 
+@login_required(login_url='/accounts/login/')
+def index(request):
+    title = "Welcome to awards"
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+    else:
+        form = PostForm()
+
+    try:
+        posts = Post.objects.all().order_by("date")
+        a_post = random.randint(0, len(posts)-1)
+        random_post = posts[a_post]
+
+    except:
+        pass
+
+
+    
+    return render(request,'index.html',{"title":title,"posts":posts,"random_post":random_post})
+
+@login_required(login_url='/accounts/login/')
+def post_project(request):
+
+
+
+    return render(request,'project.html')
 
 
 @login_required(login_url='/accounts/login/')

@@ -8,10 +8,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns=[
+    path('',views.index, name='index'),
     path('profile/',views.profile, name='profile'),
     path('update/',views.edit_profile, name='edit'),
     path('api/profile',views.ProfileViews.as_view(),name='profileapi'),
     path('api/posts', views.PostViews.as_view(),name='postsapi'),
+    path('postprojo/', views.post_project,name='project')
 
 ]
 if settings.DEBUG:

@@ -48,3 +48,23 @@ class Post(models.Model):
     @classmethod
     def search_project(cls,search_term):
         return cls.objects.filter(title_icontains=search_term)
+
+    @classmethod
+    def all_posts(cls):
+        return cls.objects.all()
+
+class Rating(models.Model):
+    rating = [(1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10')]
+
+    design = models.IntegerField(choices=rating, default=0, blank=True)
+    usability = models.IntegerField(choices=rating, blank=True)
+    content = models.IntegerField(choices=rating, blank=True)
+    design_average = models.FloatField(default=0, blank=True)
+    usability_average = models.FloatField(default=0, blank=True)
+    content_average = models.FloatField(default=0, blank=True)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='rater')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings', null=True)
+
+    
+
