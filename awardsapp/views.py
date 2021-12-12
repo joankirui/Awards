@@ -4,9 +4,9 @@ from django.contrib import messages
 
 from awardsapp.models import Post
 from .serializers import PostSerializer, ProfileSerializer
-from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm,PostForm
+from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm,PostForm,RatingsForm
 from rest_framework.generics import ( ListAPIView)
-from .models import Profile,Post
+from .models import Profile,Post,Rating
 import random
 
 

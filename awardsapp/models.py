@@ -46,8 +46,8 @@ class Post(models.Model):
         self.save()
 
     @classmethod
-    def search_project(cls,search_term):
-        return cls.objects.filter(title_icontains=search_term)
+    def search_by_title(cls,search_term):
+        return cls.objects.filter(title__icontains=search_term)
 
     @classmethod
     def all_posts(cls):
