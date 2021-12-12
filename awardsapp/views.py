@@ -3,9 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from awardsapp.models import Post
-from .serializers import ProfileSerializer
+from .serializers import PostSerializer, ProfileSerializer
 from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm
-from rest_framework.generics import (GenericAPIView, ListAPIView,RetrieveAPIView)
+from rest_framework.generics import ( ListAPIView)
 from .models import Profile,Post
 
 # Create your views here.
@@ -69,4 +69,7 @@ def search_project(request):
 class ProfileViews(ListAPIView):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
-    
+
+class PostViews(ListAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all().order_by("date")
