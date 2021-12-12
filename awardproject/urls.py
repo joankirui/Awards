@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls.conf import include,url
+from django.contrib.auth import views 
+from django.urls.conf import include
+from django_registration.backends.one_step.views import RegistrationView
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    url('',include('awardsapp.urls'))
+    path('admin/', admin.site.urls),
+    path('',include('awardsapp.urls')),
+    path('accounts/register/', RegistrationView.as_view(success_url='/'),name='django_registration_register'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('logout/', views.logout_then_login, name='logout')
 ]

@@ -31,6 +31,7 @@ cloudinary.config(
 )
 
 LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'chelangat',

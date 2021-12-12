@@ -17,14 +17,19 @@ def registration(request):
             return redirect('login')
         else:
             form = RegisterForm()
-        return render(request,'registration/signup.html', {'form': form})
+        return render(request,'django_registration/registration_form.html', {'form': form})
 
-        
-@login_required
+
+
+@login_required(login_url='/accounts/login/')
+def logout_then_login(request):
+     return render(request,'registration/login.html')
+
+@login_required(login_url='/accounts/login/')
 def profile(request):
     return render(request,'profile.html')
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def edit_profile(request):
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
