@@ -52,6 +52,28 @@ def index(request):
     
     return render(request,'index.html',{"title":title,"posts":posts,"random_post":random_post,"form": form})
 
+def calculate_rating(post):
+    all_ratings = Rating.objects.filter(post=post)
+    print(all_ratings)
+
+    design_ratings = [design_rating.design for design_rating in all_ratings]
+    design_average = sum(design_ratings) / len(design_ratings)
+
+    usability_ratings = [usability_rating.usability for usability_rating in all_ratings]
+    usability_average = sum(usability_ratings) / len(usability_ratings)
+
+    content_ratings = [content_rating.content for content_rating in all_ratings]
+    content_average = sum(content_ratings) / len(content_ratings)
+
+
+    params = {
+        "design_average": design_average,
+        "usability_average": usability_average,
+        "content_average": content_average
+    }
+
+    return params
+
 @login_required(login_url='/accounts/login/')
 def single_project(request,post):
     post = Post.objects.get(title=post)
@@ -68,6 +90,13 @@ def single_project(request,post):
             rate.user = request.user
             rate.post = post
             rate.save()
+
+            average_rates = calculate_rating(post)
+            print(average_rates)
+            rate.design_average = average_rates.get("design_average")
+            rate.usability_average = average_rates.get("usability_average")
+            rate.content_average = average_rates.get("content_average")
+
     else:
         form = RatingsForm()
 
@@ -76,8 +105,6 @@ def single_project(request,post):
 
 
 
-
-    return render(request,'project.html')
 
 
 @login_required(login_url='/accounts/login/')

@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-
+{% if user_rating %}
+<h4>You have already voted!!</h4>
+{% else %}
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" class="btn btn-sm btn-info" value="Save">
 
 </form>
-
+{% endif %}
 {% endblock %}
