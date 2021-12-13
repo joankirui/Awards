@@ -10,13 +10,28 @@
 </style>
 <div class="container">
         <div class="card" style="width: 100%;">
-            <img class="card-img-top" src="{{ post.photo.url}}" alt="{{photo.title}}">
+            <img class="card-img-top" style="height: 70vh;" src="{{ post.photo.url}}" alt="{{photo.title}}">
             <div class="card-body">
-            <h4 class="card-text">{{post.title|title}}<a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h4>
+            <h2 class="card-text">{{post.title|title}}</h2>
             <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}<span style="float: right;">Posted on : {{post.date|date}}</span></p>
             </div>
+    </div>
+    {% for rating in post.ratings.all  %}
+    {% if forloop.counter is post.ratings.all.count %}
+        <div class="row mt-4 mb-4" >
+            <div class="col-md-4">
+                <span class="badge badge-success pt-4 pb-4 pr-4 pl-4">Design_average: {{ rating.design_average}}</span>
+            </div>
+            <div class="col-md-4">
+                <span class="badge badge-danger pt-4 pb-4 pr-4 pl-4">Usability_average: {{ rating.usability_average}}</span>
+            </div>
+            <div class="col-md-4">
+                <span class="badge badge-primary pt-4 pb-4 pr-4 pl-4">Content_average: {{ rating.content_average}}</span>
+            </div>
+              
         </div>
-
+        {% endif %}
+        {% endfor %}
 {% if user_rating %}
 <h4>You have already voted!!</h4>
 {% else %}
