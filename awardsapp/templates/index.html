@@ -20,7 +20,7 @@
     }
 </style>
 <div class="container-fluid" >
-    
+
     <a href="" class="image">
     <img src="/static/images/download.jpeg" alt="background image" srcset="">
         </a>
@@ -40,7 +40,7 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <input type="submit" class="btn btn-sm btn-info" value="Save">
+                    <input type="submit" class="btn btn-sm btn-info" name="submit" value="Save">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
                     </button>
 
@@ -55,10 +55,10 @@
     <div class="row">
     {% for post in posts %}
     <div class="col-md-4 mb-4">
-        <div class="card" style="width: 18rem;">
+        <div class="card  border-danger mb-4" style="width: 18rem;">
             <a href="{% url 'single_project' post.title %}"><img class="card-img-top" src="{{ post.photo.url}}" alt="{{photo.title}}"></a>
             <div class="card-body">
-            <h4 class="card-text"><a href="{% url 'single_project' post.title %}">{{post.title|title}}</a><a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h4>
+            <h4 class="card-text"><a href="{% url 'single_project' post.title %}">{{post.title|title}}&nbsp;&nbsp;</a><a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h4>
             <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}<span style="float: right;">Posted on : {{post.date|date}}</span></p>
             </div>
         </div>

@@ -50,7 +50,6 @@ def index(request):
         posts = None
 
 
-    
     return render(request,'index.html',{"title":title,"posts":posts,"random_post":random_post,"form": form})
 
 def calculate_rating(post):

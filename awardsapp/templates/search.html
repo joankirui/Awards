@@ -1,8 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    .pic {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+
+    }
+</style>
 <div class="container">
     {% if results %}
-    <p>You searched for {{message}}</p>
+    <p>You searched for {{results.count}} projects</p>
+    {% for post in results %}
+    <div class="col-md-4 mb-4">
+        <div class="card  border-danger mb-4" style="width: 18rem;">
+            <a href="{% url 'single_project' post.title %}"><img class="card-img-top" src="{{ post.photo.url}}" alt="{{photo.title}}"></a>
+            <div class="card-body">
+            <h4 class="card-text"><a href="{% url 'single_project' post.title %}">{{post.title|title}}&nbsp;&nbsp;</a><a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h4>
+            <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}<span style="float: right;">Posted on : {{post.date|date}}</span></p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
     {% else %}
     <p>No projects found</p>
     {% endif %}
