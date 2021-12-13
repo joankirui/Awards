@@ -1,7 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.contrib.auth.models import User
 from awardsapp.models import Post
 from .serializers import PostSerializer, ProfileSerializer
 from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm,PostForm,RatingsForm
@@ -32,6 +32,8 @@ def index(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
+            import pdb
+            pdb.set_trace()
             post.user = request.user
             post.save()
     else:
@@ -47,11 +49,10 @@ def index(request):
 
 
     
-    return render(request,'index.html',{"title":title,"posts":posts,"random_post":random_post})
+    return render(request,'index.html',{"title":title,"posts":posts,"random_post":random_post,"form": form})
 
 @login_required(login_url='/accounts/login/')
 def post_project(request):
-
 
 
     return render(request,'project.html')
@@ -64,6 +65,16 @@ def logout_then_login(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     return render(request,'profile.html')
+
+
+def user_profile(request, username):
+    user_prof = get_object_or_404(User, username=username)
+    if request.user == user_prof:
+        return redirect('profile', username=request.user.username)
+    params = {
+        'user_prof': user_prof,
+    }
+    return render(request, 'userprofile.html', params)
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
