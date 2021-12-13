@@ -13,7 +13,7 @@ urlpatterns=[
     path('update/',views.edit_profile, name='edit'),
     path('api/profile',views.ProfileViews.as_view(),name='profileapi'),
     path('api/posts', views.PostViews.as_view(),name='postsapi'),
-    path('postprojo/', views.post_project,name='project'),
+    path('single_project/<post>', views.single_project,name='single_project'),
     path('search',views.search_project,name='search_project')
 
 ]

@@ -53,7 +53,28 @@ def index(request):
     return render(request,'index.html',{"title":title,"posts":posts,"random_post":random_post,"form": form})
 
 @login_required(login_url='/accounts/login/')
-def post_project(request):
+def single_project(request,post):
+    post = Post.objects.get(title=post)
+    ratings = Rating.objects.filter(user=request.user, post=post).first()
+
+    user_rating = False
+    if ratings is not None:
+        user_rating = True
+
+    if request.method == 'POST':
+        form = RatingsForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = request.user
+            rate.post = post
+            rate.save()
+    else:
+        form = RatingsForm()
+
+
+    return render(request,'project.html',{"form":form,"user_rating":user_rating,"post":post})
+
+
 
 
     return render(request,'project.html')
