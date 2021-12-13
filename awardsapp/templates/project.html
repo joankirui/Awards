@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+<style>
+    .pic {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+</style>
+<div class="container">
+        <div class="card" style="width: 100%;">
+            <img class="card-img-top" src="{{ post.photo.url}}" alt="{{photo.title}}">
+            <div class="card-body">
+            <h4 class="card-text">{{post.title|title}}<a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h4>
+            <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}<span style="float: right;">Posted on : {{post.date|date}}</span></p>
+            </div>
+        </div>
+
 {% if user_rating %}
 <h4>You have already voted!!</h4>
 {% else %}
@@ -11,4 +27,5 @@
 
 </form>
 {% endif %}
+</div>
 {% endblock %}

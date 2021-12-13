@@ -8,6 +8,7 @@ from .forms import UpdateUserForm,UpdateProfileForm,RegisterForm,PostForm,Rating
 from rest_framework.generics import ( ListAPIView)
 from .models import Profile,Post,Rating
 import random
+from django.http import HttpResponseRedirect
 
 
 
@@ -96,6 +97,9 @@ def single_project(request,post):
             rate.design_average = average_rates.get("design_average")
             rate.usability_average = average_rates.get("usability_average")
             rate.content_average = average_rates.get("content_average")
+
+            rate.save()
+            return HttpResponseRedirect(request.path_info)
 
     else:
         form = RatingsForm()
