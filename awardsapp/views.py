@@ -10,6 +10,7 @@ from .models import Profile,Post,Rating
 import random
 
 
+
 # Create your views here.
 def registration(request):
     if request.method == 'POST':
@@ -29,13 +30,13 @@ def registration(request):
 def index(request):
     title = "Welcome to awards"
     if request.method == "POST":
-        form = PostForm(request.POST)
+        print(request.POST)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            import pdb
-            pdb.set_trace()
             post.user = request.user
             post.save()
+        return redirect('/')
     else:
         form = PostForm()
 
@@ -44,8 +45,8 @@ def index(request):
         a_post = random.randint(0, len(posts)-1)
         random_post = posts[a_post]
 
-    except:
-        pass
+    except Post.DoesNotExist:
+        posts = None
 
 
     

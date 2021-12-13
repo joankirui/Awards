@@ -31,7 +31,7 @@ class PostForm(forms.ModelForm):
     photo = CloudinaryField('image')
     class Meta:
         model = Post
-        fields = ['photo','url','description','title']
+        fields = ['title','photo','description','url']
 
 class RatingsForm(forms.ModelForm):
     

@@ -23,11 +23,14 @@
       <ul class="navbar-nav navbar-right">
           {% if user.is_authenticated %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ user.username|title }} <img class="rounded-circle prof"  src="{{ user.profile.prof_pic.url }}" alt="">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+              <a class="dropdown-item text-center" href="{% url 'profile' %}">Profile</a>
+              <hr>
+              <a class="dropdown-item text-center" href="{% url 'edit' %}">Edit Profile</a>
+              <hr>
                 <a class="dropdown-item text-center" href="/logout">Logout</a>
             </div>
           </li>
