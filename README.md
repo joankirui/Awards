@@ -6,6 +6,8 @@
 
 ## Live Link
 
+    https://jkawards.herokuapp.com/
+
 ## User Story
     * A user can view posted projects and their details.
     * A user can post a project to be rated/reviewed.
@@ -43,6 +45,7 @@
     Open the application on your browser 127.0.0.1:8000.
 
 ## Api Endpoints
+
     https://jkawards.herokuapp.com/api/profile
     https://jkawards.herokuapp.com/api/posts
 
