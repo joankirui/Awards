@@ -17,13 +17,13 @@
 ## Setup and Installation
     To get the project ...
 
-# Cloning the repository:
+<h3>Cloning the repository:</h3>
     https://github.com/joankirui/Awards.git
 
-# Navigate into the folder and install requirements
+<h3>Navigate into the folder and install requirements</h3>
     cd Awards pip install -r requirements.txt
 
-# Install and activate Virtual
+<h3>Install and activate Virtual</h3>
     - python3.6 -m venv virtual 
     - source virtual/bin/activate  
 # Setup Database 
