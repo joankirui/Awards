@@ -3,12 +3,14 @@
 {% block content %}
 {% load static %}
 <style>
+    .circle {
+        border-radius: 40%;
+        
+        
+        
+    }
     .card {
         box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
-    }
-    .image {
-        background-repeat: no-repeat;
-        overflow-x: hidden;
     }
     .pic {
         width: 20px;
@@ -17,12 +19,31 @@
     }
     .container-fluid {
         background-image: url("/static/images/download.jpeg");
+        height: 100vh;
     }
 </style>
-<div class="container-fluid" >
+<div class="container-fluid" style="margin-top: 0px;padding-top: 15em;" >
 
-    <a href=" " class="image">
-    <img src="/static/images/download.jpeg" alt="background image" srcset=""></a>
+    <h2 id="image" class="heading text-center"><a style ="text-decoration: none;color: white;font-size: 40px;" href="{% url 'single_project' random_post.title %}" >{{ random_post.title|title }}</a></h2>
+    <p class="text-center" style="color: rgb(38, 173, 173);font-size: 30px;"><strong>By {{random_post.user.username}}</strong></p>
+    {% for rating in random_post.ratings.all %}
+    {% if forloop.counter is random_post.ratings.all.count %}
+    <div class="rate text-white" style="display: flex;justify-content: space-evenly;">
+
+
+    <span class="badge badge-success pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">DESIGN : {{rating.design_average}}</span>
+  
+
+    <span class="badge badge-danger pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">USABILITY : {{rating.usability_average}}</span>
+    
+
+    <span class="badge badge-primary pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">CONTENT : {{rating.content_average}}</span>
+        
+    
+</div>
+    {% endif %}
+    {% endfor %}
+
 </div><br><br>
 <div class="container">
     {% if user.is_authenticated %}

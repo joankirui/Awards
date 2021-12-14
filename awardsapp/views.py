@@ -58,7 +58,7 @@ def calculate_rating(post):
 
     design_ratings = [design_rating.design for design_rating in all_ratings]
     design_average = sum(design_ratings) / len(design_ratings)
-
+    
     usability_ratings = [usability_rating.usability for usability_rating in all_ratings]
     usability_average = sum(usability_ratings) / len(usability_ratings)
 
@@ -96,7 +96,10 @@ def single_project(request,post):
             rate.usability_average = average_rates.get("usability_average")
             rate.content_average = average_rates.get("content_average")
 
-            rate.save()
+            # rate.design_average = round(average_rates.get("design_average"), 2)
+            # rate.usability_average = round(average_rates.get("usability_average"), 2)
+            # rate.content_average = round(average_rates.get("content_average"), 2)
+            # rate.save()
             return HttpResponseRedirect(request.path_info)
 
     else:

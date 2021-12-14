@@ -20,13 +20,13 @@
     {% if forloop.counter is post.ratings.all.count %}
         <div class="row mt-4 mb-4" >
             <div class="col-md-4">
-                <span class="badge badge-success pt-4 pb-4 pr-4 pl-4">Design_average: {{ rating.design_average}}</span>
+                <span class="badge badge-success pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">Design_average: {{ rating.design_average}}</span>
             </div>
             <div class="col-md-4">
-                <span class="badge badge-danger pt-4 pb-4 pr-4 pl-4">Usability_average: {{ rating.usability_average}}</span>
+                <span class="badge badge-danger pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">Usability_average: {{ rating.usability_average}}</span>
             </div>
             <div class="col-md-4">
-                <span class="badge badge-primary pt-4 pb-4 pr-4 pl-4">Content_average: {{ rating.content_average}}</span>
+                <span class="badge badge-primary pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">Content_average: {{ rating.content_average}}</span>
             </div>
               
         </div>
