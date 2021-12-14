@@ -54,7 +54,7 @@ def index(request):
 
 def calculate_rating(post):
     all_ratings = Rating.objects.filter(post=post)
-    # print(all_ratings)
+    print(all_ratings)
 
     design_ratings = [design_rating.design for design_rating in all_ratings]
     design_average = sum(design_ratings) / len(design_ratings)
@@ -95,11 +95,8 @@ def single_project(request,post):
             rate.design_average = average_rates.get("design_average")
             rate.usability_average = average_rates.get("usability_average")
             rate.content_average = average_rates.get("content_average")
+            rate.save()
 
-            # rate.design_average = round(average_rates.get("design_average"), 2)
-            # rate.usability_average = round(average_rates.get("usability_average"), 2)
-            # rate.content_average = round(average_rates.get("content_average"), 2)
-            # rate.save()
             return HttpResponseRedirect(request.path_info)
 
     else:

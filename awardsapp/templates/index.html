@@ -3,6 +3,19 @@
 {% block content %}
 {% load static %}
 <style>
+    .badget span {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .badget p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .circle {
         border-radius: 40%;
         
@@ -30,14 +43,21 @@
     {% if forloop.counter is random_post.ratings.all.count %}
     <div class="rate text-white" style="display: flex;justify-content: space-evenly;">
 
-
-    <span class="badge badge-success pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">DESIGN : {{rating.design_average}}</span>
-  
-
-    <span class="badge badge-danger pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">USABILITY : {{rating.usability_average}}</span>
+    <div class="badget">
+    <span class="badge badge-success pt-2 pb-2 pr-2 pl-2" style="border-radius: 50%;">{{rating.design_average}}</span>
+    <p>Design</p>
+    </div>
+        
+    <div class="badget">
+    <span class="badge badge-danger pt-2 pb-2 pr-2 pl-2" style="border-radius: 50%;">{{rating.usability_average}}</span>
+    <p>Usability</p>
+    </div>
     
-
-    <span class="badge badge-primary pt-4 pb-4 pr-4 pl-4" style="border-radius: 80%;">CONTENT : {{rating.content_average}}</span>
+    
+    <div class="badget">
+    <span class="badge badge-primary pt-2 pb-2 pr-2 pl-2" style="border-radius: 50%;">{{rating.content_average}}</span>
+    <p>Content</p>
+    </div>
         
     
 </div>
