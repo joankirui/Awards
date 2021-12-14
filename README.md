@@ -26,7 +26,7 @@
 <h3>Install and activate Virtual</h3>
     - python3.6 -m venv virtual 
     - source virtual/bin/activate  
-    
+
 # Setup Database 
     SetUp your database User,Password,Host then make migrate
         python manage.py makemigrations awards
@@ -43,6 +43,8 @@
     Open the application on your browser 127.0.0.1:8000.
 
 ## Api Endpoints
+    https://jkawards.herokuapp.com/api/profile
+    https://jkawards.herokuapp.com/api/posts
 
 
 
