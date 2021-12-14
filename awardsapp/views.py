@@ -54,7 +54,7 @@ def index(request):
 
 def calculate_rating(post):
     all_ratings = Rating.objects.filter(post=post)
-    print(all_ratings)
+    # print(all_ratings)
 
     design_ratings = [design_rating.design for design_rating in all_ratings]
     design_average = sum(design_ratings) / len(design_ratings)
