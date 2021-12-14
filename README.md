@@ -26,6 +26,7 @@
 <h3>Install and activate Virtual</h3>
     - python3.6 -m venv virtual 
     - source virtual/bin/activate  
+    
 # Setup Database 
     SetUp your database User,Password,Host then make migrate
         python manage.py makemigrations awards
