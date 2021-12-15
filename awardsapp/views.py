@@ -57,13 +57,19 @@ def calculate_rating(post):
     print(all_ratings)
 
     design_ratings = [design_rating.design for design_rating in all_ratings]
-    design_average = sum(design_ratings) / len(design_ratings)
+    average_design = sum(design_ratings) / len(design_ratings)
+    design_average = round(average_design, 2)
+    
     
     usability_ratings = [usability_rating.usability for usability_rating in all_ratings]
-    usability_average = sum(usability_ratings) / len(usability_ratings)
+    average_usability = sum(usability_ratings) / len(usability_ratings)
+    usability_average = round(average_usability, 2)
+    
 
     content_ratings = [content_rating.content for content_rating in all_ratings]
-    content_average = sum(content_ratings) / len(content_ratings)
+    average_content = sum(content_ratings) / len(content_ratings)
+    content_average = round(average_content, 2)
+    
 
 
     params = {
