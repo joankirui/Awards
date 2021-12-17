@@ -1,22 +1,38 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+<style>
+    .card {
+        box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
+    }
+    .pic {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+</style>
 
 <div class="container" style="margin-top:7%;">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8 mt-4">
+        <div class="col-md-6 mt-4">
             <img class="rounded-circle" style="height: 300px;width: 300px;" src="{{ user.profile.prof_pic.url }}" alt="profile photo">
-            <h5 class="text-center mt-3"><strong>{{user.username|title}}</strong></h5>
-            <h4 class="text-center mt-3">{{user.bio}}</h4>
-            <p class="text-center"> <strong>{{user.email}}</strong></p>
+            <h5 class="text-center mt-3"><strong>Username: {{user.username|title}}</strong></h5>
+            <p class="text-center mt-3">Bio: {{user.profile.bio}}</p>
+            <p class="text-center"> <strong>Email: {{user.email}}</strong></p>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            {% for post in posts %}
+            <div class="card  border-danger mb-4" style="width: 18rem;">
+                <a href="{% url 'single_project' post.title %}"><img class="card-img-top" src="{{ post.photo.url}}" alt="{{photo.title}}"></a>
+                <div class="card-body">
+                <h4 class="card-text"><a href="{% url 'single_project' post.title %}">{{post.title|title}}&nbsp;&nbsp;</a><a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h4>
+                <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}</p>
+                </div>
+                <div class="card-footer text-muted"><span style="float: right;">Posted on : {{post.date|date}}</span></div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-
-    
-
 </div>
-
-
 {% endblock %}

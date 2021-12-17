@@ -25,7 +25,7 @@
         <div class="card" style="width: 100%;">
             <img class="card-img-top" style="height: 70vh;" src="{{ post.photo.url}}" alt="{{photo.title}}">
             <div class="card-body">
-            <h2 class="card-text">Title: {{post.title|title}}</h2>
+            <h2 class="card-text">Title: {{post.title|title}}&nbsp;&nbsp;<a class="btn btn-sm btn-outline-info" href="{{ post.url }}">View</a></h2>
             <p class="card-text"><em>Description: {{post.description|title}}</em></p>
             <p class="card-text"><img src="{{post.user.profile.prof_pic.url}}" class="pic" alt=""> By {{post.user.username|title}}<span style="float: right;">Posted on : {{post.date|date}}</span></p>
             </div>

@@ -111,17 +111,15 @@ def single_project(request,post):
 
     return render(request,'project.html',{"form":form,"user_rating":user_rating,"post":post})
 
-
-
-
-
 @login_required(login_url='/accounts/login/')
 def logout_then_login(request):
      return render(request,'registration/login.html')
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    return render(request,'profile.html')
+    current_user = request.user
+    posts = Post.objects.filter(user=current_user.id).all
+    return render(request,'profile.html',{"posts": posts})
 
 
 def user_profile(request, username):
