@@ -6,6 +6,8 @@
 
   This is a django application that allows users to post their projects for others to rate and review based on usability,content and design.
 
+## Screenshot
+    ![Awards](/static/images/main.png)
 ## Live Link:
     [https://jkawards.herokuapp.com/]
 
