@@ -1,12 +1,14 @@
 ## Awards
+## Author
     Joan Kirui
 
 ## Description
+
     This is a django application that allows users to post their projects for others to rate and review based on usability,content and design.
 
 ## Live Link
 
-    https://jkawards.herokuapp.com/
+    [https://jkawards.herokuapp.com/]
 
 ## User Story
     * A user can view posted projects and their details.
@@ -46,8 +48,8 @@
 
 ## Api Endpoints:
 
-    https://jkawards.herokuapp.com/api/profile
-    https://jkawards.herokuapp.com/api/posts
+    [https://jkawards.herokuapp.com/api/profile]
+    [https://jkawards.herokuapp.com/api/posts]
 
 
 
