@@ -8,6 +8,7 @@
 
 ## Screenshot
     ![Awards](/static/images/main.png)
+    
 <h3> Live Link:</h3>
     [https://jkawards.herokuapp.com/]
 
