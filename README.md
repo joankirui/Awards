@@ -8,7 +8,7 @@
 
 ## Screenshot
     ![Awards](/static/images/main.png)
-## Live Link:
+<h3> Live Link:</h3>
     [https://jkawards.herokuapp.com/]
 
 ## User Story
@@ -49,6 +49,7 @@
 
 <h3> Api Endpoints:</h3>
     https://jkawards.herokuapp.com/api/profile
+
     https://jkawards.herokuapp.com/api/posts
 
 
