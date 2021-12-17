@@ -8,7 +8,7 @@
 
 ## Live Link
 
-    [https://jkawards.herokuapp.com/]
+    [ https://jkawards.herokuapp.com/ ]
 
 ## User Story
     * A user can view posted projects and their details.
