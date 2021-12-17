@@ -47,10 +47,9 @@
 
     Open the application on your browser 127.0.0.1:8000.
 
-## Api Endpoints:
-
-    [https://jkawards.herokuapp.com/api/profile]
-    [https://jkawards.herokuapp.com/api/posts]
+<h3> Api Endpoints:</h3>
+    https://jkawards.herokuapp.com/api/profile
+    https://jkawards.herokuapp.com/api/posts
 
 
 
